@@ -9,6 +9,16 @@ source myenv/bin/activate
 ```
 ### Install Required packages
 ```bash
+asgiref==3.2.10
+Django==3.1.1
+django-bootstrap-form==3.4
+django-filter==2.3.0
+django-widget-tweaks==1.4.8
+pytz==2020.1
+sqlparse==0.3.1
+```
+
+```bash
 pip install django
 pip install django-filters
 pip install django-bootstrap-form

@@ -21,16 +21,17 @@ deactivate
 
 ### Start Running：
 run on terminal： `python manage.py runserver`
+Open on the terminal: http://127.0.0.1:8000/
+To upload csv file: http://127.0.0.1:8000/upload-csv
+Administration page: http://127.0.0.1:8000/admin
 
-
-### Make Migrations
+### Make Migrations (when you make change on models.py file)
 ```bash
-./manage.py makemigrations
-./manage.py migrate
+python manage.py makemigrations
+python manage.py migrate
 ```
-
 
 ### Make Super User 
 ```bash
-./manage.py createsuperuser
+python manage.py createsuperuser
 ```

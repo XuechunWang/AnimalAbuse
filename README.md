@@ -50,6 +50,6 @@ python manage.py createsuperuser
 ### Search Page
 ![Demo](/search_page.png)
 ### Profile Page
-![Demo](/profile_page.png){:height="50%" width="50%"}
+<img src="/profile_page.png" width="200">
 ### Submit Form Page
 ![Demo](/submit_page.png)

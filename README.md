@@ -22,6 +22,7 @@ sqlparse==0.3.1
 pip install django
 pip install django-filters
 pip install django-bootstrap-form
+...
 ```
 
 ### To deactivate the environment run the following

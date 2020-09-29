@@ -47,6 +47,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-
+### Demo
 ![GitHub Logo](/search_page.png)
-Format: ![Alt Text](url)
+![GitHub Logo](/profile_page.png)
+![GitHub Logo](/submit_page.png)

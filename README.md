@@ -46,3 +46,7 @@ python manage.py migrate
 ```bash
 python manage.py createsuperuser
 ```
+
+
+![GitHub Logo](/search_page.png)
+Format: ![Alt Text](url)

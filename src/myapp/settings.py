@@ -25,7 +25,7 @@ SECRET_KEY = 'g8v%4g=sm+ld(qp$6mpz4i)0t-)yao69vu1)a9*7-%gfelqv9q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['animal-abuse-registry.herokuapp.com', '127.0.0.1']
 
@@ -149,12 +149,26 @@ LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 
 
+'''# Send emails with Gmail
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #ACCOUNT_EMAIL_VERIFICATION ='none' 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')'''
 
 
+# Send emails with SendGrid
+#EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+#SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+#EMAIL_HOST_USER = os.getenv('EMAIL_USER')
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+DEFAULT_FROM_EMAIL = 'lemonning0713@gmail.com'

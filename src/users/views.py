@@ -24,7 +24,7 @@ from .tokens import account_activation_token
 from .utils import account_activation_token
 
 
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, BadHeaderError, send_mail
 
 from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -35,7 +35,7 @@ import os
 from sendgrid.helpers.mail import *
 
 
-# Create your views here.
+'''# Create your views here.
 def registerPage(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -86,12 +86,12 @@ def registerPage(request):
 
 
         context = {'form': form}
-        return render(request, 'register.html', context)
-'''
+        return render(request, 'register.html', context)'''
+
 # Send grid testing
 def registerPage(request):
 
-    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
 
 
     if request.user.is_authenticated:
@@ -99,7 +99,7 @@ def registerPage(request):
     else:
         if request.method == 'POST':
             form = CreateUserForm(request.POST) 
-            from_email = Email("app187760892@heroku.com")
+            from_email = "lemonning0713@gmail.com"
             if form.is_valid():
                 
                 #form.save()
@@ -126,13 +126,20 @@ def registerPage(request):
                 email = EmailMessage(
                     email_subject,
                     message,
-                    'nonreply@gmail.com',
+                    from_email,
                     to = [to_email],
                 )
                 mail = Mail(from_email, email_subject, to_email, message)
-                response = sg.client.mail.send.post(request_body=mail.get())
+                
 
-                email.send()
+                try:
+                    #email.send()
+                    send_mail(email_subject, message, from_email, [to_email], fail_silently = True)
+                    #send_mail('testing', 'my message','lemonning0713@gmail.com',['lemonning0713@gmail.com'],fail_silently=False)
+                    #response = sg.client.mail.send.post(request_body=mail.get())
+                    
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found')
 
 
                 username = form.cleaned_data.get('username')
@@ -147,7 +154,7 @@ def registerPage(request):
 
         context = {'form': form}
         return render(request, 'register.html', context)
-'''
+
 
 
 class VerificationView(View):

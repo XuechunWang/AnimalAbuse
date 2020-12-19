@@ -10,6 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
+from django.conf import settings
 
 
 from django.contrib import messages
@@ -35,7 +36,7 @@ import os
 from sendgrid.helpers.mail import *
 
 
-'''# Create your views here.
+# Create your views here.
 def registerPage(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -68,7 +69,7 @@ def registerPage(request):
                 email = EmailMessage(
                     email_subject,
                     message,
-                    'nonreply@gmail.com',
+                    settings.FROM_EMAIL,
                     to = [to_email],
                 )
 
@@ -86,8 +87,8 @@ def registerPage(request):
 
 
         context = {'form': form}
-        return render(request, 'register.html', context)'''
-
+        return render(request, 'register.html', context)
+'''
 # Send grid testing
 def registerPage(request):
 
@@ -154,7 +155,7 @@ def registerPage(request):
 
         context = {'form': form}
         return render(request, 'register.html', context)
-
+'''
 
 
 class VerificationView(View):

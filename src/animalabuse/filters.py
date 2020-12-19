@@ -14,7 +14,13 @@ OFFENSE_TYPE = (('AGGRAVATED CRUELTY', 'AGGRAVATED CRUELTY TO ANIMALS'),
                 ('SEXUAL', 'SEXUAL ACTIVITIES INVOLVING ANIMALS'),
                 ('OTHER', 'OTHER'))
 
+
+SOURCE_TYPE = (('Government Sourced Entries', 'Government Sourced Entries'),
+               ('Publicly Entered Entries', 'Publicly Entered Entries'))
+
+
 class UserFilter(django_filters.FilterSet):
+
     name = django_filters.CharFilter(field_name="name", lookup_expr='icontains', label = 'Abuser Name', 
     								widget = TextInput(attrs={'placeholder': 'Name'}))
     county = django_filters.CharFilter(field_name="county", lookup_expr='icontains', label = 'County', 
@@ -26,6 +32,12 @@ class UserFilter(django_filters.FilterSet):
     #offense_choice = django_filters.ChoiceFilter(field_name="offense_choice", label = 'Offense', choices = OFFENSE_TYPE) 
     convictionyear = django_filters.NumberFilter(field_name="convictiondate", lookup_expr='year', label = 'Conviction Year')
     #convictiondate = django_filters.NumberFilter(field_name="convictiondate", lookup_expr='date', label = 'Conviction Date')
+
+    dataSource = django_filters.ChoiceFilter(field_name="dataSource", label = 'Data Source',
+                                    choices = SOURCE_TYPE)
+    
+
+
 
     class Meta:
         model = animalabuse

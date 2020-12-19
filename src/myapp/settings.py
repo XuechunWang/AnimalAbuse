@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'g8v%4g=sm+ld(qp$6mpz4i)0t-)yao69vu1)a9*7-%gfelqv9q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+#DEBUG = False
 DEBUG = True
 
 ALLOWED_HOSTS = ['animal-abuse-registry.herokuapp.com', '127.0.0.1']
@@ -156,8 +156,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')'''
-
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')
+'''
 
 # Send emails with SendGrid
 #EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
@@ -172,3 +172,5 @@ EMAIL_USE_TLS = True
 EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 DEFAULT_FROM_EMAIL = 'lemonning0713@gmail.com'
+
+
